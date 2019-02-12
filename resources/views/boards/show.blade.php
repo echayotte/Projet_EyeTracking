@@ -15,7 +15,7 @@
         @endif
 
         <div id="page">
-            <img draggable="false" src="/storage/images/pages/{{ $board->pluck('board_image')[0] }}" alt="planche de BD" id="img" class="boardsBD noselect">
+            <img draggable="false" src="/storage/pages/{{ $board->pluck('board_image')[0] }}" alt="planche de BD" id="img" class="boardsBD noselect">
         </div>
         
         @if ($idPage == $lastBoard)

@@ -42,7 +42,7 @@ class BoardsController extends Controller
        try {
            // récupère le nom du fichier uploadé
             $originalName = $request->file('filename')->getClientOriginalName();
-            $completePath = $request->file('filename')->storeAs('public/images/pages', $originalName);
+            $completePath = $request->file('filename')->storeAs('public/pages', $originalName);
             $path = substr($completePath, 7); // retire la chaîne 'public/' du path
 
             // envoi du path du fichier, du numéro de la page et de l'id de la bd correspondante dans la table 'pages'

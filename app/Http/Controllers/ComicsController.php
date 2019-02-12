@@ -152,7 +152,7 @@ class ComicsController extends Controller
         Storage::delete('public/'.$path_delete);
 
 
-        // Storage::delete('public/ storage/images/pages');
+        // Storage::delete('public/ storage/pages');
 
         Comic::where('comic_id', $id)->delete();
 
