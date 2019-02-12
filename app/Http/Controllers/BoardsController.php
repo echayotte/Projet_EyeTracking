@@ -106,9 +106,11 @@ class BoardsController extends Controller
        
         // $board = Board::all()->where('fk_comic_id',$idBD)->where('board_number',$idPage);
         $boards = Board::all()->where('fk_comic_id', $idBD);
-        $board = Board::all()->where('fk_comic_id',$idBD)->where('board_number',$idPage)->pluck('board_image');
+        $board = Board::all()->where('fk_comic_id',$idBD)->where('board_number',$idPage);
+        $lastBoard = Board::all()->where('fk_comic_id',1)->pluck('board_number')->last();
+        $firstBoard = Board::all()->where('fk_comic_id',1)->pluck('board_number')->first();
 
-        return view('boards.show',compact('boards', 'board'));
+        return view('boards.show',compact('boards', 'board', 'idBD', 'idPage', 'lastBoard', 'firstBoard'));
     }
 
     /**

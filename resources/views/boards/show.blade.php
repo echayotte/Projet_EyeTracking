@@ -1,17 +1,30 @@
-@extends('layout.app') 
-@section('title') Board
+@extends('layout.app')
+
+@section('title')
+    Board
 @endsection
  
 @section('content')
 <div id="app">
 
     <section id="sectionBoard">
-        <a href=""><img src="/img/back.svg" alt="précédent" id="backBoard"></a>
+            
+        @if ($idPage == $firstBoard)
+        @else
+        <a href="/board/read/{{ $idBD }}/{{ $idPage-1 }}"><img src="/img/back.svg" alt="précédent" id="backBoard"></a>
+        @endif
+
         <div id="page">
-            <img draggable="false" src="/storage/images/pages/{{ $board[0] }}" alt="planche de BD" id="img" class="boardsBD noselect">
+            <img draggable="false" src="/storage/images/pages/{{ $board->pluck('board_image')[0] }}" alt="planche de BD" id="img" class="boardsBD noselect">
         </div>
-        <a href=""><img src="/img/next.svg" alt="suivant" id="nextBoard"></a>
+        
+        @if ($idPage == $lastBoard)
+        @else
+        <a href="/board/read/{{ $idBD }}/{{ $idPage+1 }}"><img src="/img/next.svg" alt="suivant" id="nextBoard"></a>
+        @endif
+        
     </section>
+
     <div class="buttonScrollBoard">
         <img src="/img/up.svg" alt="scroll up" id="scrollUpBoard">
         <img src="/img/down.svg" alt="scroll down" id="scrollDownBoard">

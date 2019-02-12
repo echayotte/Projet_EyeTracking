@@ -17,6 +17,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 //From Elisa : seems useless, but if laravel wants a /home : 
 //  Route::redirect('/home', '/');
+
 // page legalmentions | mentions légales
 Route::get('/legalmentions', function () {
 	return view('others.legal_mentions');
@@ -53,22 +54,29 @@ Route::get('/board/create/{idBD}', function ($idBD) {
 	return view('boards.create', ['idBD' => $idBD]);
 }) -> name('addPage');
 Route::post('/board/create/{idBD}', 'BoardsController@create');
+
 /* ----------------[ READ PAGES ]---------------- */
 Route::get('/board/read/{idBD}/{idPage}', 'BoardsController@show')->name('board');
+
 // FROM BACK : Afficher page depuis idBD >> idPage (pag_number de 'pages')
 Route::post('/board/read/{idBD}/{idPage}', function ($idBD, $idPage) {
 	return view('boards.read', ['idBD' => $idBD], ['idPage' => $idPage]);
 }) -> name('board_read');
+
 /* ----------------[ UPDATE PAGES ]---------------- */
 // not done
+
 /* ----------------[ DELETE PAGES ]---------------- */
 // not done
+
 /*
 |-----------------------------------------------------------------------
 | MEDIAS
 |-----------------------------------------------------------------------
 */
-// /!\ pour upload des fichiers : consulter "try file uploading" dans le read me
+
+/* /!\ pour upload des fichiers : consulter "try file uploading" dans le read me */
+
 /* ----------------[ READ MEDIAS ]---------------- */
 Route::get('/medias/read', 'MediasController@index')->name('medias');
 /* ----------------[ CREATE MEDIAS ]---------------- */

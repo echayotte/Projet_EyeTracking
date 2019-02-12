@@ -94,8 +94,8 @@ class ComicsController extends Controller
     public function edit($id)
     {
         $comic = Comic::all()->where('comic_id', $id)->first();
-        return view('comics.update', ['comic' => $comic]);
 
+        return view('comics.update', ['comic' => $comic]);
     }
 
     /**

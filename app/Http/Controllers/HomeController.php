@@ -31,7 +31,6 @@ class HomeController extends Controller
         $comics = Comic::all()->where('comic_publication',1);
 
         return view('others.home', ['comics' => $comics]);
-        // return view('welcome');
     }
 
     /**

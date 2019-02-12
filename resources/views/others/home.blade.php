@@ -24,11 +24,9 @@
                     </ul>
                     <div class="read_edit_catalog">
 
-
                     <!-- HERE THE IF FOR ADMIN + MODIFY BUTTON -->
-                        <a  href="{{ route ('comics_update', $comic->comic_id ) }} "  id="button_edit_catalog"><button class="buttons">Modifier</button></a>
-
-                        <a><button class="buttons">Lire</button></a>
+                        <a  href="{{ route ('comics_update', $comic->comic_id ) }}"  id="button_edit_catalog"><button class="buttons">Modifier</button></a>
+                        <a href="/board/read/{{ $comic->comic_id }}/1"  ><button class="buttons">Lire</button></a>
                     </div>
                 </div>
 
@@ -53,8 +51,8 @@
                         <div class="read_edit_catalog">
 
                         <!-- HERE THE IF FOR ADMIN + MODIFY BUTTON -->
-                            <a><button class="buttons" id="button_edit_catalog">Modifier</button></a>
-                            <a><button class="buttons">Lire</button></a>
+                        <a  href="{{ route ('comics_update', $comic->comic_id ) }}"  id="button_edit_catalog"><button class="buttons">Modifier</button></a>
+                        <a href="/board/read/{{ $comic->comic_id }}/1"  ><button class="buttons">Lire</button></a>
                         </div>
                     </div>
 

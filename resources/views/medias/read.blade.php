@@ -1,18 +1,14 @@
-@extends('layout.app')
-@section('title')
-
-Liste des médias
-
-Medias
-
+@extends('layout.app') 
+@section('title') Liste des médias Medias
 @endsection
+ 
 @section('content')
 
 <!-- ALERT UPON ADDING MEDIA -->
 @if ($message = Session::get('add'))
 <div class="alert alert-success alert-dismissible" role="alert">
-  {{ $message }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    {{ $message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
 </button>
 </div>
@@ -21,8 +17,8 @@ Medias
 <!-- ALERT UPON MEDIA CREATION FAILURE -->
 @if ($message = Session::get('duplicate'))
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
-  {{ $message }}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    {{ $message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
 </button>
 </div>
@@ -30,26 +26,25 @@ Medias
 
 <section id="sectionListMedia">
 
-<!-- CONFIRMATION ALERT UPON MEDIA DELETION -->
-@if ($message = Session::get('alert_delete'))
-      <div class="modal-content alert-warning">
+    <!-- CONFIRMATION ALERT UPON MEDIA DELETION -->
+    @if ($message = Session::get('alert_delete'))
+    <div class="modal-content alert-warning">
         <div class="modal-header">
-			<h4 class="alert-heading col-12">Suppression en cours</h4>
+            <h4 class="alert-heading col-12">Suppression en cours</h4>
         </div>
-		<p>
-			Voulez-vous vraiment supprimer le media suivant :
-			{{ $message }} ?
-		</p>
-		</br>
-		<div class="mb-0">
-		<a href="{{ route('medias_destroy', ['name' => $message ]) }}" class="btn btn-danger">Supprimer</a>
-		<a href="{{ route('medias') }}" class="btn btn-warning">Annuler</a>
-		</div>
+        <p>
+            Voulez-vous vraiment supprimer le media suivant : {{ $message }} ?
+        </p>
+        </br>
+        <div class="mb-0">
+            <a href="{{ route('medias_destroy', ['name' => $message ]) }}" class="btn btn-danger">Supprimer</a>
+            <a href="{{ route('medias') }}" class="btn btn-warning">Annuler</a>
+        </div>
         <div class="modal-footer">
-			<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         </div>
-      </div>
-@endif
+    </div>
+    @endif
 
 	<h2>Liste des Médias</h2>
 	<a href="/medias/create" id="addMedia" class="btn btn-outline-secondary">Ajouter un média</a>
@@ -60,12 +55,11 @@ Medias
 
 			@foreach ($medias as $media)
 
-
 			<div class="card" style="width: 18rem;">
 
-		name		@if ($media->media_type == 'img')
-		name			<img class="card-img-top " src="{{ $media->media_path }}" alt="Miniature">
-		name		@endif
+				@if ($media->media_type == 'img')
+					<img class="card-img-top " src="{{ $media->media_path }}" alt="Miniature">
+				@endif
 
 				@if ($media->media_type == 'video')
 				<!-- may need to do depending on video types (attribute type = "") -->
@@ -89,13 +83,9 @@ Medias
 				</div>
 			</div>
 
-
 			@endforeach
-
 
 		</div>
 
 	</section>
-
-
-	@endsection
+@endsection
