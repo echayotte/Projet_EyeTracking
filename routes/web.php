@@ -31,12 +31,15 @@ Route::get('/legalmentions', function () {
 // FROM BACK : This is the form, and on submit the ::post is called
 Route::get('/comics/create', 'ComicsController@create')->name('comics_create');
 Route::post('/comics/store', 'ComicsController@store');
+
 /* ----------------[ READ COMICS ]---------------- */
 Route::get('/comics/read', 'ComicsController@index')->name('comics_index');
+
 /* ----------------[ UPDATE COMICS ]---------------- */
 // FROM BACK : there's some html and css not reaching routes with parameters.
 Route::get('/comics/update/{id}', 'ComicsController@edit')->name('comics_update');
 Route::post('/comics/update/{id}', 'ComicsController@update');
+
 /* ----------------[ DELETE COMICS ]---------------- */
 // FROM BACK : right now it's an input that then pass the comics' id  in $GET.
 // /!\ Doesn't work if you have pages in your DB that are linked to it
@@ -104,14 +107,16 @@ Route::get('/medias/destroy/{name}', 'MediasController@destroy')->name('medias_d
 Route::get('/pages/edit', function () {
 	return view('modifBoard');
 })->name('modifBoard');
+
 Route::get('/pages/mapping', function () {
 	return view('mapping');
 })->name('mapping');
+
 /* ----------------[ READ MAPPING ]---------------- */
 // FROM FRONT : this route is used to show the sample board with sounds
 // Remove this line and board_mapping.blade.php
-Route::get('/pages/mapping/test', function () {
-	return view('board_mapping');
-})->name('board_mapping');
+// Route::get('/pages/mapping/test', function () {
+// 	return view('board_mapping');
+// })->name('board_mapping');
 /* ----------------[ DELETE MAPPING ]---------------- */
 // not done
