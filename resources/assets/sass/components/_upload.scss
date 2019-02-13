@@ -6,7 +6,7 @@ section#medias-upload{
         padding: 10px;
         margin: 100px auto;
         border:1px solid #6B6B69;
-        height:165px;
+        height:210px;
         width: 460px;
         box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.75);
         background-color: rgba(0, 0, 0, 0.1);    
@@ -63,6 +63,9 @@ section#medias-upload{
     a
     {
         margin-left: 137px;
+        margin-top: 20px;
+        border: 2px solid #696969;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.75);  
     }
 
 }

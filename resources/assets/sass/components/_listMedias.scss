@@ -1,0 +1,47 @@
+#sectionListMedia {
+	text-align: center;
+
+	li {
+		list-style: none;
+	}
+
+	#addMedia {
+		margin-top: 50px;
+		margin-left: 91%;
+		// position: fixed;
+		color: rgba(0, 0, 0, 0.8);
+	}
+
+	.card {
+		height: 500px;
+		margin: -40px 30px 10px 30px;
+		width: 18rem;
+	}
+
+	div.card-body {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+	}
+
+	img.card-img-top {
+		// height: 250px;
+		object-fit: cover;
+	}
+
+	video,
+	audio {
+		height: 250px;
+		width: 100%;
+		object-fit: cover;
+	}
+	.miniature {
+		font-size: 250px;
+		color: rgba(0, 0, 0, 0.8);
+	}
+	.audio_controls {
+		margin-bottom: 52px;
+	}
+
+
+}
