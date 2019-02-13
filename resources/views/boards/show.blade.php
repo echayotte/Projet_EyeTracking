@@ -29,7 +29,10 @@
         <img src="/img/up.svg" alt="scroll up" id="scrollUpBoard">
         <img src="/img/down.svg" alt="scroll down" id="scrollDownBoard">
     </div>
-    <button type="button" class="btn btn-outline-secondary" id="buttonReturnBoard">Retour</button>
+
+    <a href="{{ Route('comics_index') }}">
+        <button type="button" class="btn btn-outline-secondary" id="buttonReturnBoard">Retour</button>
+    </a>
 
     <!-- For the selection of pages -->
     <form>

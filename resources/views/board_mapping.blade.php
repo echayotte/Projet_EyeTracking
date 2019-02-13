@@ -1,10 +1,9 @@
-@extends('layout.app') 
-@section('title') Test media
+@extends('layout.app')
+
+@section('title')
+Mapping test
 @endsection
 
-
-
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
 @section('content')
 <div id="app">
     <div id="page">
