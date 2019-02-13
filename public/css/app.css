@@ -10714,6 +10714,15 @@ a.text-dark:focus {
   background-color: rgba(0, 0, 0, 0.8);
 }
 
+.center_margin {
+  text-align: center;
+  margin: 50px 40% 0;
+  background-color: sandybrown;
+  padding-bottom: 10px;
+  padding-top: 8px;
+  color: white;
+}
+
 #sectionBoard {
   margin-top: 3vh;
   display: flex;
@@ -10769,8 +10778,8 @@ a.text-dark:focus {
   right: 4vw;
 }
 
-#page {
-  position: relative;
+area {
+  cursor: pointer;
 }
 
 .comics_catalog ul li {
@@ -11027,13 +11036,15 @@ div.alert {
 }
 
 #sectionListMedia #addMedia {
-  margin-left: 8px;
-  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-left: 91%;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 #sectionListMedia .card {
   height: 500px;
-  margin: 10px 30px;
+  margin: -40px 30px 10px 30px;
+  width: 18rem;
 }
 
 #sectionListMedia div.card-body {
@@ -11043,7 +11054,6 @@ div.alert {
 }
 
 #sectionListMedia img.card-img-top {
-  height: 250px;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -11056,12 +11066,21 @@ div.alert {
      object-fit: cover;
 }
 
+#sectionListMedia .miniature {
+  font-size: 250px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+#sectionListMedia .audio_controls {
+  margin-bottom: 52px;
+}
+
 section#medias-upload .cadre {
   align-content: center;
   padding: 10px;
   margin: 100px auto;
   border: 1px solid #6B6B69;
-  height: 165px;
+  height: 210px;
   width: 460px;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.75);
   background-color: rgba(0, 0, 0, 0.1);
@@ -11115,5 +11134,8 @@ section#medias-upload input[type=submit]:hover {
 
 section#medias-upload a {
   margin-left: 137px;
+  margin-top: 20px;
+  border: 2px solid #696969;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.75);
 }
 
