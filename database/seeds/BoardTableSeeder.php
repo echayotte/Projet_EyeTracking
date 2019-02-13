@@ -30,9 +30,9 @@ class BoardTableSeeder extends Seeder
             ['board_id' => 14, 'board_image' => 'pc5.jpg', 'board_number' => 4, 'fk_comic_id' => 4, 'created_at' => date('Y-m-d H:i:s'),  'updated_at' => date('Y-m-d H:i:s')],
             ['board_id' => 15, 'board_image' => 'pc6.jpg', 'board_number' => 5, 'fk_comic_id' => 4, 'created_at' => date('Y-m-d H:i:s'),  'updated_at' => date('Y-m-d H:i:s')],
             ['board_id' => 16, 'board_image' => 'z3.jpg', 'board_number' => 1, 'fk_comic_id' => 5, 'created_at' => date('Y-m-d H:i:s'),  'updated_at' => date('Y-m-d H:i:s')],
-            ['board_id' => 16, 'board_image' => 'z4.jpg', 'board_number' => 2, 'fk_comic_id' => 5, 'created_at' => date('Y-m-d H:i:s'),  'updated_at' => date('Y-m-d H:i:s')],
-            ['board_id' => 16, 'board_image' => 'z5.jpg', 'board_number' => 3, 'fk_comic_id' => 5, 'created_at' => date('Y-m-d H:i:s'),  'updated_at' => date('Y-m-d H:i:s')],
-            ['board_id' => 16, 'board_image' => 'z6.jpg', 'board_number' => 4, 'fk_comic_id' => 5, 'created_at' => date('Y-m-d H:i:s'),  'updated_at' => date('Y-m-d H:i:s')]
+            ['board_id' => 17, 'board_image' => 'z4.jpg', 'board_number' => 2, 'fk_comic_id' => 5, 'created_at' => date('Y-m-d H:i:s'),  'updated_at' => date('Y-m-d H:i:s')],
+            ['board_id' => 18, 'board_image' => 'z5.jpg', 'board_number' => 3, 'fk_comic_id' => 5, 'created_at' => date('Y-m-d H:i:s'),  'updated_at' => date('Y-m-d H:i:s')],
+            ['board_id' => 19, 'board_image' => 'z6.jpg', 'board_number' => 4, 'fk_comic_id' => 5, 'created_at' => date('Y-m-d H:i:s'),  'updated_at' => date('Y-m-d H:i:s')]
         ];
 
         Board::insert($boards);
