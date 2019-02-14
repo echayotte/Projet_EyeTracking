@@ -1,31 +1,51 @@
 # EyeTracking BD
 
+## more files you can view and have yet no tab on site :
+http://127.0.0.1:8000/
+http://127.0.0.1:8000/board/create/1 //add a board on a comic  
+http://127.0.0.1:8000/pages/edit // create areas on a board  
+http://127.0.0.1:8000/pages/mapping //testing sound on areas'board  
 ## Installation :  
 
-- Run <code> git clone git@github.com:SimplonCahors/EyeTracking_Laravel.git </code>
-- Run <code> npm install </code> .
-- Run <code> composer install </code>.
-- Copy the <b>.env.example</b> into a <b>.env</b> and add your database connection settings.
-- Run <code>php artisan key:generate</code>.
+### run in the terminal all thoses lines one by one :
 
-## Import database :
+general installation :
+```shell
+git clone git@github.com:echayotte/Projet_EyeTracking.git
+git checkout dev
+composer install
+  # to avoid further problems
+  # composer update
 
-- Run <code> php artisan migrate:fresh </code>.
-
-If you want default datas you can use seeds : 
-
-- Run <code> composer dump-autoload </code>.
-- Run <code> php artisan db:seed </code>
-
-## Launch the server :
-
-- Run <code> php artisan serve</code>.
-
-
-
+npm install
+  #npm audit fix
+  #npm audit
+  #npm install --save-dev laravel-mix@4.0.14
+npm audit //should be good now
+```
+database creation :
+```
+Then create a DB in your phpMyAdmin
+```
+environment creation :
+```shell
+cp .env.example .env
+  # change info in .env [DB_DATABASE=changeHere, DB_USERNAME=changeHere, DB_PASSWORD=changeHere]
+```
+laravel's site generation :
+```shell
+php artisan key:generate
+php artisan migrate  --seed
+php artisan storage:link
+```
+launch the server ( # and watching files )
+```shell
+php artisan serve
+  # npm run watch
+```
 
 ## Problem with npm run dev : 
-If you have th problem below : 
+If you have the problem below : 
   ✖ Error: pngquant failed to build, make sure that libpng-dev is installed
 
 You need to follow this steps : 
@@ -51,9 +71,6 @@ If so, try <code> php artisan config:cache </code>
 - make sure you have the latest DB and your .env is set up correctly. 
 - run <code> php artisan storage:link </code>  
 - if your terminal says it already exists, delete the storage folder in ./public (/!\ not ./storage) and run the command again.
-
-
-
 
 ## License
 @TDB
