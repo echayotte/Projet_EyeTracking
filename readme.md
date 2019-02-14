@@ -1,7 +1,9 @@
 # EyeTracking BD
 
-## more files you can view and have yet no tab on site :
+## Get access to the site :
 http://127.0.0.1:8000/
+
+## more files you can view and have yet no tab on site :
 http://127.0.0.1:8000/board/create/1 //add a board on a comic  
 http://127.0.0.1:8000/pages/edit // create areas on a board  
 http://127.0.0.1:8000/pages/mapping //testing sound on areas'board  
@@ -14,13 +16,7 @@ general installation :
 git clone git@github.com:echayotte/Projet_EyeTracking.git
 git checkout dev
 composer install
-  # to avoid further problems
-  # composer update
-
 npm install
-  #npm audit fix
-  #npm audit
-  #npm install --save-dev laravel-mix@4.0.14
 npm audit //should be good now
 ```
 database creation :
@@ -32,6 +28,12 @@ environment creation :
 cp .env.example .env
   # change info in .env [DB_DATABASE=changeHere, DB_USERNAME=changeHere, DB_PASSWORD=changeHere]
 ```
+
+add sources files to access :
+``` shell
+cp -r storage/sources/ storage/app
+mv storage/app/sources storage/app/public
+```
 laravel's site generation :
 ```shell
 php artisan key:generate
@@ -41,9 +43,11 @@ php artisan storage:link
 launch the server ( # and watching files )
 ```shell
 php artisan serve
-  # npm run watch
+npm run dev
+npm run watch
 ```
-
+------------
+------------
 ## Problem with npm run dev : 
 If you have the problem below : 
   ✖ Error: pngquant failed to build, make sure that libpng-dev is installed
