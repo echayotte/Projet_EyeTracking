@@ -14,7 +14,6 @@ npm-debug.log
 yarn-error.log
 .env
 
-!/storage/app/public/
-!/storage/app/sources/
+!/storage/sources/*
 !.env.example
 
