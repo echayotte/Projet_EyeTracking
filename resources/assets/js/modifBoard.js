@@ -1,152 +1,161 @@
-// Variable declaration
 if (document.URL.includes('pages/edit')) {
-  var btnCreateZone = document.getElementById("buttonCreateZone");
-  var btnModifZone = document.getElementById("buttonModifZone");
-  var formZone = document.getElementById("formZone");
-  var bool = false;
-  var section = document.getElementById('page');
-  if (localStorage.getItem('idLocal')) {
-    var idLocal = localStorage.getItem('idLocal');
-    console.log(idLocal);
-  } else {
-    localStorage.setItem('idLocal', 0);
-    var idLocal = localStorage.getItem('idLocal');
-  }
+    var btnCreateArea = document.getElementById("btnCreateArea");
+    var btnModifArea = document.getElementById("btnModifArea");
+    var showModalArea = document.getElementById("showModalArea");
+    var bool = false;
+    var page = document.getElementById('page');
 
-  // localstorage display
-  for(var i = 1; i < idLocal+1; i++){
-    var zone = document.createElement("canvas");
-            zone.setAttribute("id", "myCanvas"+i);
-            // canvas.setAttribute("class", "myCanvasClass");
-            zone.setAttribute("width", localStorage.getItem('width'+i));
-            zone.setAttribute("height", localStorage.getItem('height'+i));
-            zone.style.left = localStorage.getItem('left'+i);
-            zone.style.top = localStorage.getItem('top'+i);
-            zone.style.position = "absolute";
+    // Get to know how many areas there is on the board with localStorage property: idLocal
+    if (localStorage.getItem('idLocal')) {
+        var idLocal = localStorage.getItem('idLocal');
+        console.log(`number of area(s) in local storage: ${idLocal}`);
+    } else {
+        localStorage.setItem('idLocal', 0);
+        var idLocal = localStorage.getItem('idLocal');
+        console.log(`number of area(s) in local storage: ${idLocal}`);
+    }
 
-            zone.style.backgroundColor = "rgba(0,0,255,0.4)";
-            zone.style.border = "2px solid rgba(0,0,255,1)";
-            section.appendChild(zone);
-  }
+    // display valid canvas after actualisation
+    for (var i = 1; i <= idLocal; i++) {
 
-// When clicking on the pages / editbouton "Créer une zone"
-  var createZone = btnCreateZone.addEventListener("click", function opacity() {
-    if (this.click) {
-      section.style.cursor = "crosshair";
-      formZone.style.display = "block";
-      btnCreateZone.className += " select";
-      btnModifZone.classList.remove("select");
-      bool = true;
-      console.log(bool);
-      if (document.URL.includes('pages/edit') || (document.URL.includes('mapping'))) {
-        // If the button was clicked
-        if (bool) {
-          var xa = 0;
-          var ya = 0;
-          function ajout(event) {
-            event.preventDefault();
-            xa = event.layerX;
-            ya = event.layerY;
+        let area = document.createElement("canvas");
+        area.setAttribute("id", "area" + i);
+        area.setAttribute("class", "areaCreated");
+        area.setAttribute("width", localStorage.getItem('width' + i));
+        area.setAttribute("height", localStorage.getItem('height' + i));
+        area.style.left = localStorage.getItem('left' + i);
+        area.style.top = localStorage.getItem('top' + i);
+       
+        page.appendChild(area);
+        console.log(area);
+    }
+
+    // Create a canvas tag
+    // When clicking on the pages/edit button "Créer une zone"
+    var CreateArea = btnCreateArea.addEventListener("click", function CreateArea() {
+        if (this.click) {
+            // Open Create's modal window
+            page.style.cursor = "crosshair";
+            showModalArea.style.display = "block";
+            btnCreateArea.className += " select";
+            btnModifArea.classList.remove("select");
+            bool = true;
+            console.log(`Création d'une zone: bool est ${bool}`);
+
+            // if (document.URL.includes('pages/edit') || (document.URL.includes('mapping'))) {
             // If the button was clicked
-            if (bool) {
-              section.addEventListener('mousemove', draw_update);
-              bool = false;
-            }
-          }
-          // Function that calls the creation of the zone
-          function draw_update(e) {
-            var xb = e.layerX;
-            var yb = e.layerY;
-            creation(xa, ya, xb, yb);
-          }
+            // if (bool) {
 
-          // Removing EventListener 
-          function remove(event) {
-            section.removeEventListener('mousemove', draw_update);
-            section.removeEventListener('mousedown', ajout);
-            var confirmer = confirm("Etes vous sur de vouloir utiliser cette zone ?");
-            if (confirmer) {
-              idLocal++;
-              section.removeEventListener('mouseup', remove);
-              var posLeft = document.getElementById("myCanvas").style.left;
-              var posTop = document.getElementById("myCanvas").style.top;
-              var width = document.getElementById("myCanvas").width;
-              var height = document.getElementById("myCanvas").height;
-              localStorage.setItem('left' + idLocal, posLeft);
-              localStorage.setItem('top' + idLocal, posTop);
-              localStorage.setItem('width' + idLocal, width + 'px');
-              localStorage.setItem('height' + idLocal, height + 'px');
-              localStorage.setItem('idLocal', idLocal);
-              document.getElementById("myCanvas").id = "myCanvas" + idLocal;
-              section.style.cursor = "initial";
-            } else {
-              section.removeEventListener('mouseup', remove);
-              section.removeChild(document.getElementById("myCanvas"));
-              section.style.cursor = "initial";
-            }
-          }
+            // Reset coords
+            var xa = 0;
+            var ya = 0;
 
-          section.addEventListener('mousedown', ajout);
-          section.addEventListener('mouseup', remove);
-
-          // Zone creation function
-          function creation(xA, yA, xB, yB) {
-            var old = document.getElementById('myCanvas');
-
-
-            console.log(xA, yA, xB, yB);
-            var canvas = document.createElement("canvas");
-            canvas.setAttribute("id", "myCanvas");
-            // canvas.setAttribute("class", "myCanvasClass");
-            canvas.setAttribute("width", Math.abs(xB - xA));
-            canvas.setAttribute("height", Math.abs(yB - yA));
-            canvas.style.position = "absolute";
-
-            if (xA < xB && yA > yB) {
-              canvas.style.left = xA + "px";
-              canvas.style.top = yB + "px";
-            }
-            else if (xA > xB && yA > yB) {
-              canvas.style.left = xB + "px";
-              canvas.style.top = yB + "px";
-            }
-            else if (xA > xB && yA < yB) {
-              canvas.style.left = xB + "px";
-              canvas.style.top = yA + "px";
-            }
-            else {
-              canvas.style.left = xA + "px";
-              canvas.style.top = yA + "px";
+            function get2FirtsCoords(event) {
+                event.preventDefault();
+                xa = event.layerX;
+                ya = event.layerY;
+                // If the button was clicked
+                // if (bool) {
+                page.addEventListener('mousemove', get2LastCoords);
+                bool = false;
+                // }
             }
 
-            canvas.style.backgroundColor = "rgba(255,0,0,0.4)";
-            canvas.style.border = "2px solid rgba(255,0,0,1)";
-            // We remove the old area
-            if (old) {
-              section.removeChild(old);
+            function get2LastCoords(event) {
+                var xb = event.layerX;
+                var yb = event.layerY;
+                // console.log(`\nxa: ${xa}, ya: ${ya}, xb: ${xb}, yb: ${yb}`);
+
+                assignCoordsAndAttributeCanvas(xa, ya, xb, yb);
             }
 
-            // We append the zone in the image
-            section.appendChild(canvas);
-          };
+            // Zone creation function
+            function assignCoordsAndAttributeCanvas(xA, yA, xB, yB) {
+
+                //As we draw an area, remove each outdated area
+                let areaUpdated = document.getElementById('area');
+
+                if (areaUpdated) {
+                    page.removeChild(areaUpdated);
+                }
+                // console.log(old);
+
+                console.log(`\nxA: ${xA} || yA: ${yA} || xB: ${xB} || yB: ${yB}\n`);
+
+                let area = document.createElement("canvas");
+                area.setAttribute("id", "area");
+                area.setAttribute("class", "areaValidated");
+                area.setAttribute("width", Math.abs(xB - xA));
+                area.setAttribute("height", Math.abs(yB - yA));
+
+                if (xA < xB && yA > yB) {
+                    area.style.left = xA + "px";
+                    area.style.top = yB + "px";
+                } else if (xA > xB && yA > yB) {
+                    area.style.left = xB + "px";
+                    area.style.top = yB + "px";
+                } else if (xA > xB && yA < yB) {
+                    area.style.left = xB + "px";
+                    area.style.top = yA + "px";
+                } else {
+                    area.style.left = xA + "px";
+                    area.style.top = yA + "px";
+                }
+
+                // We append the zone in the board
+                page.appendChild(area);
+            }
+
+            // Removing EventListener 
+            function remove(event) {
+                page.removeEventListener('mousemove', get2LastCoords);
+                page.removeEventListener('mousedown', get2FirtsCoords);
+                var confirmer = confirm("Etes vous sur de vouloir utiliser cette zone ?");
+
+                if (confirmer) {
+                    idLocal++;
+                    page.removeEventListener('mouseup', remove);
+                    var posLeft = document.getElementById("area").style.left;
+                    var posTop = document.getElementById("area").style.top;
+                    var width = document.getElementById("area").width;
+                    var height = document.getElementById("area").height;
+                    localStorage.setItem('left' + idLocal, posLeft);
+                    localStorage.setItem('top' + idLocal, posTop);
+                    localStorage.setItem('width' + idLocal, width + 'px');
+                    localStorage.setItem('height' + idLocal, height + 'px');
+                    localStorage.setItem('idLocal', idLocal);
+                    document.getElementById("area").id = "area" + idLocal;
+                    page.style.cursor = "initial";
+                } else {
+                    page.removeEventListener('mouseup', remove);
+                    page.removeChild(document.getElementById("area"));
+                    page.style.cursor = "initial";
+                }
+            }
+
+            page.addEventListener('mousedown', get2FirtsCoords);
+            page.addEventListener('mouseup', remove);
+        } else {
+            showModalArea.style.display = "none";
         }
-      }
-    } else {
-      formZone.style.display = "none";
-    }
-  });
+    });
 
-  // When clicking on the "Modifier une zone" button
-  var modifZone = btnModifZone.addEventListener("click", function opacity() {
-    if (this.click) {
-      section.style.cursor = "initial";
-      bool = false;
-      console.log(bool);
-      formZone.style.display = "block";
-      btnCreateZone.classList.remove("select");
-      btnModifZone.className += " select";
-    } else {
-      formZone.style.display = "none";
-    }
-  });
+    // When clicking on the pages/edit button "Modifier une zone"
+    var ModifArea = btnModifArea.addEventListener("click", function ModifArea() {
+        if (this.click) {
+            page.style.cursor = "initial";
+            bool = false;
+            console.log(`Modification d'une zone: bool est ${bool}`);
+            showModalArea.style.display = "block";
+            btnCreateArea.classList.remove("select");
+            btnModifArea.className += " select";
+        } else {
+            showModalArea.style.display = "none";
+        }
+    });
+
+    const submit = document.getElementById("inputSubmit");
+    var reloadPage = submit.addEventListener("click", function () {
+        location.reload();
+    })
 }

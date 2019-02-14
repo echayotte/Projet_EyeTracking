@@ -1,33 +1,32 @@
-#appModif {
-    display: flex;
-    margin-top: 10px;
+#btnCreateArea, #btnModifArea {
+    margin: 20px 0 20px 47px;
+    padding: 8px;
 }
 
-#imgModif {
-    display: flex;
-}
 
-#sectionModifBoard {
-    padding: 10px;
-}
-
-#buttonCreateZone {
-    margin-left: 60px;
-    margin-bottom: 10px;
-}
-
-#buttonModifZone {
-    margin-left: 60px;
-    margin-bottom: 10px;
-}
-
-#formZone {
+#showModalArea {
     display: none;
     position: fixed;
 }
 
 .select {
-    background-color: rgba(0, 0, 0, 0.5);
-    color: whitesmoke;
+    background: $teal;
+    color: $gray-100;
 }
-
+#boardWithAreas page img {
+    border: 1px solid $red;
+}
+.areaCreated {
+    position: absolute;
+    background: rgba(0,255,0,0.5);
+    border: 3px solid rgb(0,100,20);
+}
+.areaValidated {
+    position: absolute;
+    background: rgba(255,127.5,0,0.4);
+    border: 5px dotted rgba(255,130,0,1);
+}
+#inputSubmit {
+    margin-top: 10px;
+    width: 100%;
+}
